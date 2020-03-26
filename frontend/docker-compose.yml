@@ -10,3 +10,4 @@ services:
     volumes: 
       - /opt/app/node_modules
       - .:/opt/app
+    tty: true
