@@ -1,2 +1,4 @@
-email: kuba.sikorski95@gmail.com
+# Zajęcia z wybranych technologii DevOps
+
+## Jakub Sikorski
 
