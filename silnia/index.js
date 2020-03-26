@@ -25,9 +25,14 @@ app.get('/silnia/:wartosc', (req, resp) => {
 		process.exit(1);
 	}
 	client.get(silnia, (err, result) => {
-		const wynik = factoralize(silnia);
-		client.set(silnia, parseInt(wynik));
-		resp.send("Silnia " + silnia + " rowna sie " + wynik);
+		if (result) {
+			resp.send("Silnia " + silnia + " rowna sie " + result);
+		}
+		else {
+			const wynik = factoralize(silnia);
+			client.set(silnia, parseInt(wynik));
+			resp.send("Silnia " + silnia + " rowna sie " + wynik);
+		}
 	});
 });
 
