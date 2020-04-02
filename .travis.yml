@@ -1,0 +1,10 @@
+sudo: required
+
+services:
+  - docker
+
+before_install:
+  - docker build -t ksikorski1/docker-myfrontend/frontend
+
+scripts:
+  -docker run -e CI=true ksikorski1/docker-myfrontend/frontend yarn test
