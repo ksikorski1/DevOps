@@ -1,0 +1,34 @@
+Uzyte polecania dockerowe do uruchomienia kontenerow
+
+1. utworzenie sieci
+docker network create my-demo-app
+
+2. uruchomienie kontenera z redisem
+docker run --rm --name my-redis --network my-demo-app redis
+--rm po wylaczeniu usuwa kontenera
+--network przylaczamy do utworzonej sieci
+
+3. uruchomienie kontenera z postgresem
+docker run --rm --name my-postgres -e POSTGRES_PASSWORD=123qaz123qaz --network my-demo-app postgres
+POSTGRES_PASSWORD - nie moze byc puste lub undefined
+
+4. przylaczenie aplikacji webowej korzystajacej z redisa i postgresa na tej samej sieci
+docker run --env REDIS_HOST=my-redis --rm --name my-backend --network my-demo-app
+-v /opt/app/node_modules -v $(pwd):/opt/app
+-e PGHOST=my-postgres -e PGUSER=postgres -e PGDATABASE=postgres -e PGPASSWORD=123qaz123qaz -e PGPORT=5432
+ID contenera
+
+-v wolumeny ustawiamy aby miec podglad na zywo
+-e zmienne srodowiskowe, tutaj potrzebne do bazy danych
+na koncu id kontenera zbudowanego wczesniej na podstawie dockerfile przez build
+kontenery redisa i postgresa musza byc uruchomione, inaczej oczywiscie sie to nie uda
+
+5. aby sie podlaczyc do kontenera z baza danych
+docker exec -it ID psql -U postgres
+ID - id kontenera z uruchomionym postgresem
+psql -U postgres, exec uruchamia komende psql, podlaczamy sie jako username, tutaj "postgres"
+
+
+Kolejne kroki to juz wzbogacenie aplikacji o funkcjonalnosci, dla mnie to zmiany w index.js
+a) NWD liczb (cache przechowujacy wczesniej obliczone)
+b) sam wynik tej operacji wpisany do bazy danych postgres, do tabeli results
