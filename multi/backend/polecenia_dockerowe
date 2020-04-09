@@ -32,3 +32,21 @@ psql -U postgres, exec uruchamia komende psql, podlaczamy sie jako username, tut
 Kolejne kroki to juz wzbogacenie aplikacji o funkcjonalnosci, dla mnie to zmiany w index.js
 a) NWD liczb (cache przechowujacy wczesniej obliczone)
 b) sam wynik tej operacji wpisany do bazy danych postgres, do tabeli results
+
+
+6. zmodyfikowanie komendy uruchamiajacej aplikacje webowa przez dodanie portow
+
+docker run --env REDIS_HOST=my-redis --rm --name my-backend --network my-demo-app
+-v /opt/app/node_modules -v $(pwd):/opt/app
+-e PGHOST=my-postgres -e PGUSER=postgres -e PGDATABASE=postgres -e PGPASSWORD=123qaz123qaz -e PGPORT=5432 -e REDIS_PORT=6379
+-p 8081:9091
+ID contenera
+
+7. nasluchiwanie odpowiedzi
+
+curl localhost:8081
+    empty response from server
+    ????????????
+
+8. NWD + cache
+

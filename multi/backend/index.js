@@ -29,8 +29,40 @@ console.log(keys);
 
 app.get('/', (req, resp) => {
     resp.send('Hello world');
-})
-
-app.listen(8080, err => {
-    console.log("service listening on port 8080");
 });
+
+/*
+app.get('/nwd/:x/:y', (req, res) => {
+    let x = parseInt(req.params.x);
+    let y = parseInt(req.params.y);
+
+    client.get(req.params.x + ',' + req.params.y, (err, result) => {
+        if(result){
+            res.send("Wynik: " + result);
+            console.log("z redis: " + result);
+        }
+        else {
+            result = nwd(x, y);
+            client.set(req.params.x + ',' + req.params.y, result);
+            res.send("Wynik: " + result);
+            console.log("obliczone: " + result);
+        }
+    });
+});
+*/
+app.listen(8081, err => {
+    console.log("service listening on port 8081");
+});
+
+nwd = (x, y) => {
+    if ((typeof x !== 'number') || (typeof y !== 'number')) 
+      return false;
+    x = Math.abs(x);
+    y = Math.abs(y);
+    while(y) {
+      let t = y;
+      y = x % y;
+      x = t;
+    }
+    return x;
+  };
