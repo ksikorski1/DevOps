@@ -9,7 +9,8 @@ app.use(bodyParser.json());
 const redis = require('redis');
 const redisClient = redis.createClient({
     host: keys.redisHost,
-    port: keys.redisPort
+    port: keys.redisPort,
+    retry_strategy: () => 1000
 });
 
 const { Pool } = require('pg');
@@ -50,8 +51,9 @@ app.get('/nwd/:x/:y', (req, res) => {
     });
 });
 */
-app.listen(8081, err => {
-    console.log("service listening on port 8081");
+
+app.listen(4000, err => {
+    console.log("service listening on port 4000");
 });
 
 nwd = (x, y) => {
