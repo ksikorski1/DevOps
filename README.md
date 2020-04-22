@@ -2,4 +2,4 @@
 
 ## Jakub Sikorski
 
-### Projekt znajduje sie w repozytorium DevOps - folder multi
+### Projekt znajduje sie w folderze multi
