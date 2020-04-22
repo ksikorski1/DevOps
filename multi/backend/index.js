@@ -69,21 +69,16 @@ app.listen(4000, err => {
 	console.log('Server listening on port 4000');
 });
 
-const test_prime = (n) =>{
-
-  if (n===1)
-  {
+const test_prime = (n) => {
+  if (n===1) {
     return 0;
   }
-  else if(n === 2)
-  {
+  else if(n === 2) {
     return 1;
-  } else
-  {
-    for(var x = 2; x < n; x++)
-    {
-      if(n % x === 0)
-      {
+  } 
+  else {
+    for(var x = 2; x < n; x++) {
+      if(n % x === 0) {
         return 0;
       }
     }
