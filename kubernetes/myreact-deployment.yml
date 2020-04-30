@@ -1,0 +1,21 @@
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: my-react-app
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: my-react-app
+  template:
+    metadata:
+      labels:
+        app: my-react-app
+    spec:
+      containers:
+        - name: my-react-app
+          image: ksikorski1/kubernetes:reactapp
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+      restartPolicy: Always
