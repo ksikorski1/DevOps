@@ -4,10 +4,14 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+
+function Random(props) {
+  const randomNumber = Math.random();
+  return <div>{randomNumber}</div>;
+}
+
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  <Random />,
   document.getElementById('root')
 );
 
