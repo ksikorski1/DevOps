@@ -1,6 +1,5 @@
 const { v4: uuidv4 } = require('uuid');
 
-
 const express = require('express');
 
 const app = express();
@@ -12,7 +11,6 @@ const redisClient = redis.createClient({
     port: 6379,
     retry_strategy: () => 1000
 });
-
 
 const appId = uuidv4();
 const appPort = 5000;
