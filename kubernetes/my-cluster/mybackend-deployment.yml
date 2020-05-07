@@ -20,6 +20,21 @@ spec:
       containers:
         - name: my-backend-container
           image: ksikorski1/mybackend
+          env:
+            - name: REDIS_HOST
+              value: myredisservice
+            - name: REDIS_PORT
+              value: '6379'
+            - name: PG_USER
+              value: 'postgres'
+            - name: PG_HOST
+              value: 'mypostgres-service'
+            - name: PG_DATABASE
+              value: 'postgres'
+            - name: PG_PASSWORD
+              value: 'qaz123qaz123qaz123'
+            - name: PG_PORT
+              value: '5432'
 
   replicas: 4
   selector:
