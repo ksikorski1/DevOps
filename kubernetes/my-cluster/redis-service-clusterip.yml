@@ -1,0 +1,14 @@
+kind: Service
+apiVersion: v1
+
+metadata:
+  name: myredisservice
+
+spec:
+  type: ClusterIP
+  ports:
+    - port: 6379
+      targetPort: 6379
+
+  selector:
+    type: cache
