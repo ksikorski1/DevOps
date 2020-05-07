@@ -20,6 +20,9 @@ spec:
       containers:
         - name: my-postgres-container
           image: postgres
+          env:
+          - name: POSTGRES_PASSWORD
+            value: 'qaz123qaz123qaz123'
 
   replicas: 1
   selector:
