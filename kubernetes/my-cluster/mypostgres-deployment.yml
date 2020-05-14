@@ -22,7 +22,10 @@ spec:
           image: postgres
           env:
           - name: POSTGRES_PASSWORD
-            value: 'qaz123qaz123qaz123'
+            valueFrom:
+              secretKeyRef:
+                name: myapp-secret
+                key: PGPASSWORD
 
   replicas: 1
   selector:

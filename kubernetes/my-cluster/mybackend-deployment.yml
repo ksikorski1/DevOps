@@ -25,21 +25,15 @@ spec:
               value: myredis-service
             - name: REDIS_PORT
               value: '6379'
-            - name: INIT_MESSAGE
-              valueFrom: 
-                configMapKeyRef:
-                  name: myapp-config
-                  key: WELCOME_MESSAGE
-            - name: PGUSER
-              value: 'postgres'
-            - name: PGHOST
-              value: 'mypostgres-service'
-            - name: PGDATABASE
-              value: 'postgres'
             - name: PGPASSWORD
-              value: 'qaz123qaz123qaz123'
-            - name: PGPORT
-              value: '5432'
+              valueFrom: 
+                secretKeyRef:
+                  name: myapp-secret
+                  key: PGPASSWORD
+
+          envFrom:
+            - configMapRef:
+                name: postgres-config
 
   replicas: 4
   selector:
