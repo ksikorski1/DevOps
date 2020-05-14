@@ -22,9 +22,14 @@ spec:
           image: ksikorski1/backend
           env:
             - name: REDIS_HOST
-              value: myredisservice
+              value: myredis-service
             - name: REDIS_PORT
               value: '6379'
+            - name: INIT_MESSAGE
+              valueFrom: 
+                configMapKeyRef:
+                  name: myapp-config
+                  key: WELCOME_MESSAGE
             - name: PGUSER
               value: 'postgres'
             - name: PGHOST
