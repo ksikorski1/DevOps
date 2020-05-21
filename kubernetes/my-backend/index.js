@@ -24,7 +24,7 @@ const pgClient = new Pool({
 
 pgClient.on('error', () => console.log('No connection to PG DB'));
 
-pgClient.query('CREATE TABLE IF NOT EXISTS results(number INT)').catch(err => console.log(err));
+pgClient.query('CREATE TABLE IF NOT EXISTS results(number INT, prime INT)').catch(err => console.log(err));
 
 console.log(keys);
 
@@ -52,7 +52,7 @@ app.get('/:number', (req, resp) => {
         resp.send("NIE");
       }
       //wpisywanie do bazy danych 0 i 1 bez zadnej innej informacji jest bez sensu ale zrobione aby sie nauczyc
-      pgClient.query('INSERT INTO results(number) VALUES($1)', [wynik], (err, res) => {
+      pgClient.query('INSERT INTO results(number, prime) VALUES($1 ,$2)', [number, wynik], (err, res) => {
         if (err) {
           console.log(err.stack);
         };
