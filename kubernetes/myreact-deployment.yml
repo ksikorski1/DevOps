@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: my-react-app
-          image: ksikorski1/kubernetes:reactapp
+          image: ksikorski1/frontend
           imagePullPolicy: Always
           ports:
             - containerPort: 80
