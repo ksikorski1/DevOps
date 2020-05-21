@@ -1,8 +1,4 @@
 FROM node:alpine as mybuild
-<<<<<<< HEAD
-
-=======
->>>>>>> 3f9a934747e013933bf44909a6071c067cfea513
 WORKDIR /opt/app
 COPY package.json .
 RUN yarn install
