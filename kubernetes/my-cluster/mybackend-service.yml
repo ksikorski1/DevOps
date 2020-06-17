@@ -2,12 +2,12 @@ kind: Service
 apiVersion: v1
 
 metadata:
-  name: myapp-service
+  name: mybackend-service
 
 spec:
   type: NodePort
   ports:
-    - port: 80
+    - port: 5000
       targetPort: 5000
       nodePort: 30008
 

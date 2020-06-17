@@ -5,7 +5,7 @@ kind: Deployment
 metadata:
   name: mybackend-deployment
   labels:
-    app: myapp-backend
+    app: my-backend
     type: backend
 
 spec:
