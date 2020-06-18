@@ -20,7 +20,8 @@ spec:
       containers:
         - name: myfrontend-container
           image: ksikorski1/frontend
-          stdin: true
+          ports:
+            - containerPort: 80
 
   replicas: 2
   selector:
